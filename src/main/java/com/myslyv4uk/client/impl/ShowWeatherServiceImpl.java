@@ -1,6 +1,7 @@
 package com.myslyv4uk.client.impl;
 
 import java.io.IOException;
+import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -22,6 +23,7 @@ public class ShowWeatherServiceImpl extends TimerTask implements ShowWeatherServ
   
   public volatile WeatherService weatherService;
   ScheduledExecutorService threadService = Executors.newScheduledThreadPool(1);
+  Timer timer = new Timer();
   
   @Reference
   public void setWeatherService(WeatherService weatherService) {
@@ -36,14 +38,16 @@ public class ShowWeatherServiceImpl extends TimerTask implements ShowWeatherServ
   public synchronized void activate() throws IOException {
     System.out.println("Service ShowWeatherServiceImpl activated");
     logger.info("Service ShowWeatherServiceImpl activated loggerinfo");
-    threadService.scheduleAtFixedRate(this, 0, 1, TimeUnit.SECONDS);
+    timer.schedule(this, 0, 1000);
+   // threadService.scheduleAtFixedRate(this, 0, 1, TimeUnit.SECONDS);
   }
 
 
   @Deactivate
   public synchronized void deactivate() {
     System.out.println("Service ShowWeatherServiceImpl deactivated");
-    threadService.shutdownNow();
+    timer.cancel();
+  //  threadService.shutdownNow();
   }
  
   @Override
