@@ -1,10 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.myslyv4uk.client</groupId>
   <artifactId>weather_client</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>bundle</packaging>
-  
+
   <properties>
     <maven.bundle.plugin.version>3.0.0</maven.bundle.plugin.version>
     <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
@@ -39,11 +40,17 @@
       <version>${osgi.version}</version>
       <scope>provided</scope>
     </dependency>
-	<dependency>
-		<groupId>com.myslyv4uk.weather</groupId>
-		<artifactId>true_weather.api</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</dependency>
+    <dependency>
+      <groupId>com.myslyv4uk.weather</groupId>
+      <artifactId>true_weather.api</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.16.16</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -55,8 +62,8 @@
         <extensions>true</extensions>
         <configuration>
           <instructions>
-             <Export-Package>com.myslyv4uk.client.api</Export-Package>
-             <Private-Package>com.myslyv4uk.client.impl</Private-Package>
+            <Export-Package>com.myslyv4uk.client.api</Export-Package>
+            <Private-Package>com.myslyv4uk.client.impl</Private-Package>
           </instructions>
         </configuration>
       </plugin>
@@ -72,6 +79,4 @@
       </plugin>
     </plugins>
   </build>
-  
-  
 </project>
